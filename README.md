@@ -54,7 +54,8 @@ Here is [an example Google Doc](https://docs.google.com/document/d/1JaxRkCqZyeWI
 4. Paste your Google Doc URL _after_ the `DOC_URL=` being careful not to overwrite or change DOC_URL=.
 5. You can also set the `BASE_PATH=` to your repository name now, which will be used when you publish this project.
 6. Rename the `.env.example` file (right-click --&gt; rename) to just `.env` keeping the period at the beginning of the filename.
-7. Back in the Terminal (if you closed it, go to the Terminal menu at the top of the screen and select **New Terminal**) Copy and paste `npm run build:extract-google-doc` and press return.
+7. Back in the Terminal (if you closed it, go to the Terminal menu at the top of the screen and select **New Terminal**) Copy and paste `npm run gdoc ` 
+and press return.
 8. If everything worked, you should see a green "success" message. If not, check the permissions of your Google Doc.
 
 That last step will extract the contents of your Google Doc and store them in this repository to become part of your webpage. You can customize it further from here. Any time you make changes to your Google Doc, you will have to re-run `npm run build:extract-google-doc` to update your site.
