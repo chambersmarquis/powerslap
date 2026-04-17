@@ -3,6 +3,7 @@
   import DocRenderer from '$lib/components/DocRenderer.svelte';
   import type { Block } from '$lib/components/DocRenderer.svelte';
   const blocks = rawBlocks as Block[];
+   import IntroHero from '../components/IntroHero.svelte'; 
 </script>
 
 
@@ -11,10 +12,7 @@
 Hard-code custom code that should appear BEFORE Google Doc here. 
 This code is in +page.svelte and can be manually coded using HTML or Svelte tags.
 -->
-<header class="container-fluid d-flex flex-column align-items-center justify-content-center vh-100 mb-4" style="background-image:url('hero-example.png');background-size:cover;background-position:center;">
-  <h1 class="text-white text-center display-1">Powerslap</h1>
-  <p class="text-white fw-light text-center">top executive take advantage rising athletes </p>
-</header>
+<IntroHero/>
 
 
 <!-- DO NOT EDIT (except to modify classes). This will become code imported from Google Doc. -->
