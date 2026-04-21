@@ -16,7 +16,7 @@ $headings-font-family: 'Roboto Slab', 'Lato', serif;
 $headings-font-style: null;
 $headings-font-weight: 500;
 $headings-line-height: 1.2;
-$headings-color: #404040;
+$headings-color: #070606;
 
 $display-font-family: 'Crimson Text', 'Roboto Slab', Garamond, 'Times New Roman', serif;
 $display-font-style:  null;
@@ -40,7 +40,14 @@ html, body {
   height: 100%;
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;
-}
+background:linear-gradient(180deg, rgb(27 93 201 / 69%) 0%, rgb(178, 185, 209) 55% 42%, rgb(240 134 134 / 68%) 100%);
+background-attachment: fixed;
+} 
+
+.headline{padding-top: 2rem;
+
+padding-bottom: 1rem;}
+
 
 
 /* Break out of the centered container to full viewport width */

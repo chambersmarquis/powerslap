@@ -13,6 +13,14 @@ Hard-code custom code that should appear BEFORE Google Doc here.
 This code is in +page.svelte and can be manually coded using HTML or Svelte tags.
 -->
 <IntroHero/>
+<div class="headline-wrapper">
+
+  <!-- Main article headline
+       CUSTOMIZE: Update this text to your actual headline
+       CUSTOMIZE: Change <h1> to <h2> if you need a subheading instead -->
+  <center> <h1 class="headline">The world of Slap: <br>The fighters who take a hit to survive</h1> </center>
+
+</div>
 
 
 <!-- DO NOT EDIT (except to modify classes). This will become code imported from Google Doc. -->
