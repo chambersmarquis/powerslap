@@ -92,7 +92,7 @@
     height: 100vh;
     overflow: hidden;
     background: black;
-   cursor: url('slap.png'), auto;
+   
   }
 
   .intro-video {
@@ -102,7 +102,7 @@
     height: 100%;
     object-fit: cover;
     display: block;
-  cursor: url('slap.png'), auto;
+  cursor: grab;
   }
 
   .headline-overlay {
