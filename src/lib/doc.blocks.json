@@ -66,29 +66,8 @@
   },
   {
     "type": "shortcode",
-    "name": "Scrolly",
-    "attrs": {
-      "steps": [
-        {
-          "img": "/contract1.png",
-          "alt": "Aerial view of the city at dusk",
-          "pos": "start",
-          "text": "First block of text."
-        },
-        {
-          "img": "/contract2.png",
-          "alt": "Close-up of hands typing",
-          "pos": "start",
-          "text": "Second block of text. This is a longer description to test design appearances. In the United States, journalism is produced by media organizations or by individuals. Bloggers are often, but not always, journalists. The Federal Trade Commission requires that bloggers who write about products received as promotional gifts to disclose that they received the products for free. This is intended to eliminate conflicts of interest and protect consumers."
-        },
-        {
-          "img": "/contract3.png",
-          "alt": "Portrait of the interview subject",
-          "pos": "start",
-          "text": "Third block of text"
-        }
-      ]
-    }
+    "name": "Parallax",
+    "attrs": {}
   },
   {
     "type": "html",
