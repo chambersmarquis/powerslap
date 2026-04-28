@@ -18,7 +18,7 @@ This code is in +page.svelte and can be manually coded using HTML or Svelte tags
   <!-- Main article headline
        CUSTOMIZE: Update this text to your actual headline
        CUSTOMIZE: Change <h1> to <h2> if you need a subheading instead -->
-  <center> <h1 class="headline">The world of Slap: <br>The fighters who take a hit to survive</h1> </center>
+  <center> <h1 class="headline">The fighters who take a hit to survive</h1> </center>
 
 </div>
 
