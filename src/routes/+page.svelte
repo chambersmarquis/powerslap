@@ -35,5 +35,5 @@ This code is in +page.svelte and can be manually coded using HTML or Svelte tags
 
 <!-- Hard-code any custom code that should appear AFTER Google Doc below here. -->
 <footer class="container-fluid bg-dark text-white p-5">
-  <p class="text-center">See template on <a class="text-white" href="https://github.com/jrue/multimedia-template-2026" target="_blank">Github</a></p>
+  <p class="text-center">UC Berkeley Journalism </p>
 </footer>

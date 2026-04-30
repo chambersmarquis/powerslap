@@ -10,20 +10,17 @@
 
   export let sections = [
     {
-      title: 'Parallax Scrolling',
-      body: `Parallax scrolling is a web site trend where the background content is
-             moved at a different speed than the foreground content while scrolling.
-             Click and scroll up and down to really get the feeling of how
-             parallax scrolling works.`,
+      title: 'Section XIV Assumption of Risk/Waiver Of ALL Claims',
+      body: `The company explicity acknowledges that the sport is dangerous and may cause temporary or permanent injury, including death. At the same time, it shifts all the responsibility for those risk, including those arising from its own negligence onto the athletes.`,
     },
     {
-      title: 'Less Height',
-      body: `Scroll up and down to really get the feeling of how parallax scrolling works.`,
+      title: 'ABNORMALLY DANGEROUS',
+      body: `Athletes competeing in Power Slap are comepeting in an abnormally dangerous sport. `,
       short: true,
     },
     {
-      title: 'Scroll Up',
-      body: `Scroll up and down to really get the feeling of how parallax scrolling works.`,
+      title: 'Long-Term Brain Damage',
+      body: `One of the risk the athletes take on is long-term brain damage.`,
       short: true,
     },
   ];
