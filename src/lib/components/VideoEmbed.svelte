@@ -1,5 +1,6 @@
 <!-- src/lib/components/VideoEmbed.svelte -->
 <script lang="ts">
+  import { asset } from '$app/paths';
   export let src: string | undefined;
 
   export let title: string = '';
@@ -191,7 +192,7 @@
         {#if resolved.kind === 'file'}
           <!-- svelte-ignore a11y_media_has_caption -->
           <video
-            src={resolved.fileUrl}
+            src={asset(resolved.fileUrl)}
             title={title}
             class="w-100 h-100"
             autoplay={autoplayBool}
@@ -227,7 +228,7 @@
               {#if resolved.kind === 'file'}
                 <!-- svelte-ignore a11y_media_has_caption -->
                 <video
-                  src={resolved.fileUrl}
+                  src={asset(resolved.fileUrl)}
                   title={title}
                   class="w-100 h-100"
                   autoplay={autoplayBool}
@@ -263,7 +264,7 @@
         {#if resolved.kind === 'file'}
           <!-- svelte-ignore a11y_media_has_caption -->
           <video
-            src={resolved.fileUrl}
+            src={asset(resolved.fileUrl)}
             title={title}
             class="w-100 h-100"
             autoplay={autoplayBool}
