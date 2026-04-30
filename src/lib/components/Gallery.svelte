@@ -1,11 +1,12 @@
 <script>
   import { onMount } from 'svelte';
+  import { asset } from '$app/paths';
 
   const images = [
-    { src: '/images/gallery/1.jpeg', alt: 'Gallery image 1', caption: 'Caption for image 1' },
-    { src: '/images/gallery/2.jpeg', alt: 'Gallery image 2', caption: 'Caption for image 2' },
-    { src: '/images/gallery/3.jpeg', alt: 'Gallery image 3', caption: 'Caption for image 3' },
-    { src: '/images/gallery/4.jpeg', alt: 'Gallery image 4', caption: 'Caption for image 4' },
+    { src: asset('/images/gallery/1.jpeg'), alt: 'Gallery image 1', caption: '' },
+    { src: asset('/images/gallery/2.jpeg'), alt: 'Gallery image 2', caption: '' },
+    { src: asset('/images/gallery/3.jpeg'), alt: 'Gallery image 3', caption: '' },
+    { src: asset('/images/gallery/4.jpeg'), alt: 'Gallery image 4', caption: '' },
   ];
 
   /** @type {'full' | 'large' | 'fit'} */
