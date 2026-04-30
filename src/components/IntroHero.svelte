@@ -1,7 +1,7 @@
 <script>
   import { onMount, createEventDispatcher } from 'svelte';
-
-  export let videoSrc = '/headervideo.mp4';
+  import { asset } from '$app/paths';
+  export let videoSrc = asset('/headervideo.mp4');
   export let headline = 'POWER SLAP';
   export let storageKey = 'intro-video-played';
   export let fadeDuration = 1500;
