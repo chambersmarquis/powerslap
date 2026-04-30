@@ -1,4 +1,5 @@
 <script>
+  import { asset } from '$app/paths';
   /**
    * Parallax component — mirrors the W3Schools parallax demo layout.
    * Alternates between scrollable text sections and parallax image bands.
@@ -26,9 +27,9 @@
   ];
 
   export let parallaxImages = [
-    '/contract1.png',
-    '/contract2.png',
-    '/contract3.png',
+    asset('/contract1.png'),
+    asset('/contract2.png'),
+    asset('/contract3.png')
   ];
 </script>
 
