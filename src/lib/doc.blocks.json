@@ -30,10 +30,12 @@
   },
   {
     "type": "shortcode",
-    "name": "ImageEmbed",
+    "name": "Videopullquote",
     "attrs": {
-      "size": "full",
-      "caption": "Show this image full screen."
+      "src": "/TerryDunningquote_1.mp4",
+      "quote": "So I mean the numbers are getting beefed up. They're definitely paying for their numbers.",
+      "attribution": "Terry Dunning",
+      "size": "full"
     }
   },
   {
@@ -47,18 +49,19 @@
   },
   {
     "type": "html",
-    "html": ""
+    "html": "<p>According to legal experts, the language in the contractual document is intended to create a deliberate financial, medical, and legal distance between the company and the fighter. From medical costs to arbitration rules, these specific clauses and more in the contract reinforce that the athlete alone bears the consequences of injury, expense, or dispute, while Power Slap retains full control without assuming any responsibilities.</p>"
   },
   {
     "type": "shortcode",
-    "name": "AudioPhotoStrip",
+    "name": "Contractquote",
     "attrs": {
-      "audio": "/audiostrip/DREAMDEFERRED_short.mp3"
+      "quote": "Athlete understands that athlete may suffer injuries to the head, neck or spine; injury to muscular or skeletal systems; scratches, bruises, contusions, strains, sprains, falls, fractures; physical violence; loss and/or damage to sight, teeth or hearing; paralysis; concussions and traumatic brain injury and all of their short- and/or long-term effects, including without limitation brain damage, dementia, mood disorder, chronic traumatic encephalopathy, and/or cognitive impairment; short- and/or long-term disability; loss of income and/or career opportunities; serious injury; and/or death,",
+      "cite": "reads a section of the contract"
     }
   },
   {
     "type": "html",
-    "html": "<p>According to legal experts, the language in the contractual document is intended to create a deliberate financial, medical, and legal distance between the company and the fighter. From medical costs to arbitration rules, these specific clauses and more in the contract reinforce that the athlete alone bears the consequences of injury, expense, or dispute, while Power Slap retains full control without assuming any responsibilities.</p>\n<p>&ldquo;ATHLETE UNDERSTANDS THAT ATHLETE MAY SUFFER INJURIES TO THE HEAD, NECK OR SPINE; INJURY TO MUSCULAR OR SKELETAL SYSTEMS; SCRATCHES, BRUISES, CONTUSIONS, STRAINS, SPRAINS, FALLS, FRACTURES; PHYSICAL VIOLENCE; LOSS AND/OR DAMAGE TO SIGHT, TEETH OR HEARING; PARALYSIS; CONCUSSIONS AND TRAUMATIC BRAIN INJURY AND ALL OF THEIR SHORT- AND/OR LONG-TERM EFFECTS, INCLUDING WITHOUT LIMITATION BRAIN DAMAGE, DEMENTIA, MOOD DISORDER, CHRONIC TRAUMATIC ENCEPHALOPATHY, AND/OR COGNITIVE IMPAIRMENT; SHORT- AND/OR LONG-TERM DISABILITY; LOSS OF INCOME AND/OR CAREER OPPORTUNITIES; SERIOUS INJURY; AND/OR DEATH,&rdquo; reads a section of the contract.</p>"
+    "html": ""
   },
   {
     "type": "shortcode",

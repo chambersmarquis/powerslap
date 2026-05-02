@@ -18,7 +18,7 @@
          col-sm-10 = 10/12 on small screens
          col-lg-8  = 8/12 on large screens
          col-xxl-6 = 6/12 on extra-large screens -->
-    <div class="col-12 col-sm-10 col-lg-8 col-xxl-6">
+    <div class="col-12 ">
 
       <!-- Outer flex row: holds photo group + text block side by side -->
       <div class="d-flex align-items-center gap-3">
@@ -48,11 +48,11 @@
 
         <!-- ── BYLINE TEXT ────────────────────────────────────── -->
         <!-- Stacks author name, affiliation, and date vertically -->
-        <div class="d-flex flex-column justify-content-center">
+        <div class="">
 
           <!-- Author names
                CUSTOMIZE: Update names as needed -->
-          <strong class="author-names">By Marquis and Jennifer</strong>
+          <strong class="author-names">By Marquis Chambers and Jennifer Ugwa</strong>
           <div class="affiliation">2026 Graduate School of Journalism</div>
 
   

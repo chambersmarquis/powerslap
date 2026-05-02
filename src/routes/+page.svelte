@@ -2,8 +2,9 @@
   import rawBlocks from '$lib/doc.blocks.json';
   import DocRenderer from '$lib/components/DocRenderer.svelte';
   import type { Block } from '$lib/components/DocRenderer.svelte';
+  import IntroHero from '$lib/components/IntroHero.svelte';
+
   const blocks = rawBlocks as Block[];
-   import IntroHero from '../components/IntroHero.svelte'; 
 </script>
 
 
@@ -28,7 +29,7 @@ This code is in +page.svelte and can be manually coded using HTML or Svelte tags
   <div class="row justify-content-center">
     <div class="col-12 col-sm-10 col-lg-8 col-xxl-6">
       <DocRenderer {blocks} />
-    </div>
+    </div> 
   </div>
 </div>
 
