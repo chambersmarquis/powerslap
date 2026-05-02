@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
   import { onMount } from 'svelte';
-  import { asset } from '$app/paths';
+  import { assets } from '$app/paths';
 
   const images = [
-    { src: asset('/images/gallery/1.jpeg'), alt: 'Gallery image 1', caption: '' },
-    { src: asset('/images/gallery/2.jpeg'), alt: 'Gallery image 2', caption: '' },
-    { src: asset('/images/gallery/3.jpeg'), alt: 'Gallery image 3', caption: '' },
-    { src: asset('/images/gallery/4.jpeg'), alt: 'Gallery image 4', caption: '' },
+    { src: `${assets}/images/gallery/1.jpeg`, alt: 'Gallery image 1', caption: '' },
+    { src: `${assets}/images/gallery/2.jpeg`, alt: 'Gallery image 2', caption: '' },
+    { src: `${assets}/images/gallery/3.jpeg`, alt: 'Gallery image 3', caption: '' },
+    { src: `${assets}/images/gallery/4.jpeg`, alt: 'Gallery image 4', caption: '' },
   ];
 
   /** @type {'full' | 'large' | 'fit'} */
@@ -22,11 +22,11 @@
     activeIndex = (activeIndex + 1) % images.length;
   }
 
-  function goTo(i) {
+  function goTo(i: number) {
     activeIndex = i;
   }
 
-  function handleKeydown(e) {
+  function handleKeydown(e: KeyboardEvent) {
     if (e.key === 'ArrowLeft') prev();
     if (e.key === 'ArrowRight') next();
   }
@@ -39,18 +39,16 @@
 
 <div class="carousel-wrapper" data-size={size}>
   <!-- Indicators -->
-  <ol class="carousel-indicators">
-    {#each images as _, i (i)}
-      <li
+  <div class="carousel-indicators">
+    {#each Array.from({ length: images.length }, (_, i) => i) as i (i)}
+      <button
+        class="indicator-btn"
         class:active={i === activeIndex}
         on:click={() => goTo(i)}
         aria-label="Go to slide {i + 1}"
-        role="button"
-        tabindex="0"
-        on:keydown={(e) => e.key === 'Enter' && goTo(i)}
-      ></li>
+      ></button>
     {/each}
-  </ol>
+  </div>
 
   <!-- Slide -->
   <div class="carousel-slide">
@@ -97,21 +95,22 @@
     display: flex;
     justify-content: center;
     gap: 8px;
-    list-style: none;
     margin: 0 0 12px;
     padding: 0;
   }
 
-  .carousel-indicators li {
+  .indicator-btn {
     width: 10px;
     height: 10px;
     border-radius: 50%;
+    border: none;
     background: #ccc;
     cursor: pointer;
+    padding: 0;
     transition: background 0.2s, transform 0.2s;
   }
 
-  .carousel-indicators li.active {
+  .indicator-btn.active {
     background: #333;
     transform: scale(1.25);
   }

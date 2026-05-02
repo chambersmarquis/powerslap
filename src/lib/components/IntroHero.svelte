@@ -1,14 +1,15 @@
-<script>
+<script lang="ts">
   import { onMount, createEventDispatcher } from 'svelte';
-  import { asset } from '$app/paths';
-  export let videoSrc = asset('/headervideo.mp4');
+  import { assets } from '$app/paths';
+  export let videoSrc = `${assets}/headervideo.mp4`;
   export let headline = 'POWER SLAP';
   export let storageKey = 'intro-video-played';
   export let fadeDuration = 1500;
+  
 
   const dispatch = createEventDispatcher();
 
-  let videoEl;
+  let videoEl: HTMLVideoElement;
   let showHeadline = false;
   let shouldRenderVideo = false;
   
