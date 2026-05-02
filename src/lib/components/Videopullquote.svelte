@@ -29,7 +29,7 @@
 
   onMount(() => {
     //resolvedSrc = src || `${assets}/TerryDunningquote_1.mp4`;
-    resolvedSrc = src || asset('/TerryDunningquote_1.mp4');
+    resolvedSrc = src || asset('TerryDunningquote_1.mp4');
     videoEl.addEventListener('ended', () => (playing = false));
   });
 </script>
