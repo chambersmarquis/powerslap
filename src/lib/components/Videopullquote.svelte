@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { onMount } from 'svelte';
   import { assets } from '$app/paths';
 
@@ -7,7 +7,7 @@
   export let attribution = 'Terry Dunning';
   export let size = 'large';
 
-  let videoEl;
+  let videoEl: HTMLVideoElement;
   let playing = false;
   let muted = false;
 
