@@ -10,8 +10,8 @@
    *   attribution — optional name/source beneath the quote
    *   size       — 'fit' | 'large' | 'full'
    */
-
-  export let src = '/gallery/video.mp4';
+    import{base} from '$app/paths';
+  export let src = '{base}/gallery/video.mp4';
   export let quote = 'So I mean the numbers are getting beefed up. They definitely paying for their numbers. And you can get over 250,000 views for I think its 249. Thats nothing for Dana White when hes kind of build this motion up. But from what I hear, he building it up to dump it. He realized theres not a lot of money into this, but not as much as he thought.';
 
   export let attribution = 'Terry Dunning';
