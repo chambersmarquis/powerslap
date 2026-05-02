@@ -141,10 +141,5 @@
      PUBLICATION DATE
      CUSTOMIZE: font-size | color | margin-top (space above date)
      ============================================================ */
-  .pub-date {
-    font-size: 0.9rem;       /* CUSTOMIZE: date text size */
-    font-weight: 300;        /* CUSTOMIZE: light weight keeps date subtle */
-    color: grey;             /* CUSTOMIZE: any CSS color — e.g. #999 or var(--your-color) */
-    margin: 0.2rem 0 0;      /* CUSTOMIZE: top gap between affiliation and date */
-  }
+
 </style>
