@@ -2,12 +2,13 @@
   import { onMount } from 'svelte';
   import { assets } from '$app/paths';
 
-  export let src = `${assets}/TerryDunningquote_1.mp4`;
+  export let src = '';
   export let quote = 'So I mean the numbers are getting beefed up. They definitely paying for their numbers. And you can get over 250,000 views for I think its 249. Thats nothing for Dana White when hes kind of build this motion up. But from what I hear, he building it up to dump it. He realized theres not a lot of money into this, but not as much as he thought.';
   export let attribution = 'Terry Dunning';
   export let size = 'large';
 
   let videoEl: HTMLVideoElement;
+  let resolvedSrc = '';
   let playing = false;
   let muted = false;
 
@@ -27,6 +28,7 @@
   }
 
   onMount(() => {
+    resolvedSrc = src || `${assets}/TerryDunningquote_1.mp4`;
     videoEl.addEventListener('ended', () => (playing = false));
   });
 </script>
@@ -36,7 +38,7 @@
   <div class="vq-video-col">
     <div class="vq-video-container">
       <!-- svelte-ignore a11y-media-has-caption -->
-      <video bind:this={videoEl} {src} playsinline class="vq-video"></video>
+      <video bind:this={videoEl} src={resolvedSrc} playsinline class="vq-video"></video>
 
       <!-- Custom controls bar -->
       <div class="vq-controls">
