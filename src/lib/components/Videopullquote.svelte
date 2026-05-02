@@ -1,23 +1,13 @@
 <script>
   import { onMount } from 'svelte';
+  import { base } from '$app/paths';
 
-  /**
-   * VideoQuote component — video on the left, pull quote on the right.
-   *
-   * Props:
-   *   src        — path to the video file
-   *   quote      — pull quote text
-   *   attribution — optional name/source beneath the quote
-   *   size       — 'fit' | 'large' | 'full'
-   */
-    import{base} from '$app/paths';
-  export let src = '{base}/gallery/video.mp4';
+  export let src = `${base}/TerryDunningquote_1.mp4`;
   export let quote = 'So I mean the numbers are getting beefed up. They definitely paying for their numbers. And you can get over 250,000 views for I think its 249. Thats nothing for Dana White when hes kind of build this motion up. But from what I hear, he building it up to dump it. He realized theres not a lot of money into this, but not as much as he thought.';
-
   export let attribution = 'Terry Dunning';
   export let size = 'large';
 
-  let videoEl=false;
+  let videoEl;
   let playing = false;
   let muted = false;
 
@@ -37,7 +27,6 @@
   }
 
   onMount(() => {
-    // Sync state if video ends naturally
     videoEl.addEventListener('ended', () => (playing = false));
   });
 </script>
@@ -53,13 +42,11 @@
       <div class="vq-controls">
         <button class="vq-btn" on:click={togglePlay} aria-label={playing ? 'Pause' : 'Play'}>
           {#if playing}
-            <!-- Pause icon -->
             <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
               <rect x="5" y="4" width="4" height="16" rx="1"/>
               <rect x="15" y="4" width="4" height="16" rx="1"/>
             </svg>
           {:else}
-            <!-- Play icon -->
             <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
               <path d="M6 4l14 8-14 8V4z"/>
             </svg>
@@ -68,13 +55,11 @@
 
         <button class="vq-btn" on:click={toggleMute} aria-label={muted ? 'Unmute' : 'Mute'}>
           {#if muted}
-            <!-- Muted icon -->
             <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
               <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77 0-4.28-2.99-7.86-7-8.77z"/>
               <line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2"/>
             </svg>
           {:else}
-            <!-- Speaker icon -->
             <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
               <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77 0-4.28-2.99-7.86-7-8.77z"/>
             </svg>
@@ -113,7 +98,6 @@
   .vq-wrapper[data-size='large'] { max-width: 1100px; }
   .vq-wrapper[data-size='full']  { max-width: 100%; border-radius: 0; }
 
-  /* ── Left column: Video ── */
   .vq-video-col {
     flex: 1 1 55%;
     position: relative;
@@ -134,7 +118,6 @@
     object-fit: cover;
   }
 
-  /* Controls bar */
   .vq-controls {
     position: absolute;
     bottom: 0;
@@ -166,7 +149,6 @@
     background: rgba(255, 255, 255, 0.3);
   }
 
-  /* ── Right column: Pull quote ── */
   .vq-quote-col {
     flex: 1 1 45%;
     display: flex;
@@ -213,7 +195,6 @@
     font-style: normal;
   }
 
-  /* ── Responsive: stack on mobile ── */
   @media (max-width: 640px) {
     .vq-wrapper {
       flex-direction: column;
