@@ -1,8 +1,9 @@
 <script>
   import { onMount } from 'svelte';
   import { base } from '$app/paths';
+  import { asset } from '$app/paths';
 
-  export let src = `${base}/TerryDunningquote_1.mp4`;
+  export let src = asset('/TerryDunningquote_1.mp4');
   export let quote = 'So I mean the numbers are getting beefed up. They definitely paying for their numbers. And you can get over 250,000 views for I think its 249. Thats nothing for Dana White when hes kind of build this motion up. But from what I hear, he building it up to dump it. He realized theres not a lot of money into this, but not as much as he thought.';
   export let attribution = 'Terry Dunning';
   export let size = 'large';
