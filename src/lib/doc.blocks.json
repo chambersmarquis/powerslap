@@ -82,10 +82,10 @@
     "name": "ImageEmbed",
     "attrs": {
       "p": true,
-      "src": "/2.jpeg",
+      "src": "images/gallery/2.jpeg",
       "alt": "Casey Stephens",
       "caption": "Casey Stephens embraces a slap",
-      "size": "full"
+      "size": "large"
     }
   },
   {
