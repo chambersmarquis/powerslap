@@ -59,14 +59,15 @@
 <style>
   .parallax-page {
     font-family: 'Times New Roman', serif;
-    font-size: 17px;
-    color: #333;
+    font-size: 20px;
+    color: #000000;
+    margin-bottom: 2rem;
   }
 
   /* Text content sections */
   .content-section {
     padding: 80px 80px;
-    background: #fff;
+    background: #FAF9F6;
     text-align: center;
     min-height: 300px;
     display: flex;
@@ -102,7 +103,7 @@
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    
 
     min-height: 400px;
     width: 100%;
