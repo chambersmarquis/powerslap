@@ -4,7 +4,6 @@
 
   const images = [
     { src: `${assets}/images/gallery/1.jpeg`, alt: 'Gallery image 1', caption: '' },
-    { src: `${assets}/images/gallery/2.jpeg`, alt: 'Gallery image 2', caption: '' },
     { src: `${assets}/images/gallery/3.jpeg`, alt: 'Gallery image 3', caption: '' },
     { src: `${assets}/images/gallery/4.jpeg`, alt: 'Gallery image 4', caption: '' },
   ];
