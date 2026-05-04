@@ -1,5 +1,8 @@
 <!-- src/lib/components/ImageEmbed.svelte -->
 <script lang="ts">
+  import { onMount } from 'svelte';
+  import { assets } from '$app/paths';
+
   export let src: string | undefined;
   export let alt: string | undefined;
   export let caption: string | undefined;
@@ -11,11 +14,10 @@
   function normalizeStaticPath(raw: string) {
     const s = raw.trim();
     if (/^data:/i.test(s) || /^https?:\/\//i.test(s)) return s;
-    if (s.startsWith('/')) return s;
-    return '/' + s;
+    if (s.startsWith('/')) return `${assets}${s}`;
+    return `${assets}/${s}`;
   }
 
-  import { onMount } from 'svelte';
   let hostEl: HTMLElement | null = null;
 
   onMount(() => {
