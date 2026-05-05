@@ -12,30 +12,20 @@
   let wrapperEl: HTMLDivElement;
   let showHeadline = false;
   let shouldRenderVideo = false;
+  let needsTap = false; // shown when autoplay is blocked
 
   onMount(() => {
     const hasPlayed = localStorage.getItem(storageKey);
+    shouldRenderVideo = true;
+    if (hasPlayed) showHeadline = true;
 
-    if (!hasPlayed) {
-      shouldRenderVideo = true;
-    } else {
-      shouldRenderVideo = true;
-      showHeadline = true;
-    }
-
-    // Fix iOS 100vh bug — use actual window height instead of CSS vh
+    // Fix iOS 100vh bug
     function setHeight() {
-      if (wrapperEl) {
-        wrapperEl.style.height = `${window.innerHeight}px`;
-      }
+      if (wrapperEl) wrapperEl.style.height = `${window.innerHeight}px`;
     }
-
     setHeight();
     window.addEventListener('resize', setHeight);
-    // Also fire on orientation change for phones
-    window.addEventListener('orientationchange', () => {
-      setTimeout(setHeight, 100);
-    });
+    window.addEventListener('orientationchange', () => setTimeout(setHeight, 100));
 
     return () => {
       window.removeEventListener('resize', setHeight);
@@ -44,23 +34,46 @@
   });
 
   async function handleCanPlay() {
-    if (videoEl) {
-      try {
-        // Ensure muted before play — required for autoplay on iOS
-        videoEl.muted = true;
-        await videoEl.play();
-      } catch (error) {
-        console.error('Autoplay failed:', error);
-        showHeadline = true;
-        dispatch('finished');
-      }
+    if (!videoEl) return;
+
+    // iOS requires muted=true set in JS, not just as HTML attribute
+    videoEl.muted = true;
+
+    try {
+      await videoEl.play();
+      needsTap = false;
+    } catch {
+      // Autoplay blocked — show tap prompt instead of black screen
+      needsTap = true;
     }
   }
 
-  function handleEnded() {
+  async function handleTap() {
+    if (!videoEl) return;
+    needsTap = false;
+    videoEl.muted = true;
+    try {
+      await videoEl.play();
+    } catch {
+      // Still blocked — skip straight to headline
+      finishVideo();
+    }
+  }
+
+  function finishVideo() {
     showHeadline = true;
     localStorage.setItem(storageKey, 'true');
     dispatch('finished');
+  }
+
+  function handleEnded() {
+    finishVideo();
+  }
+
+  function handleError() {
+    // Video failed to load entirely — skip to headline so page isn't broken
+    console.error('Video failed to load:', videoSrc);
+    finishVideo();
   }
 </script>
 
@@ -83,10 +96,18 @@
       preload="auto"
       on:canplay={handleCanPlay}
       on:ended={handleEnded}
+      on:error={handleError}
     >
       <source src={videoSrc} type="video/mp4" />
-      Your browser does not support the video tag.
     </video>
+  {/if}
+
+  <!-- Tap-to-play overlay for iOS when autoplay is blocked -->
+  {#if needsTap}
+    <button class="tap-prompt" on:click={handleTap} aria-label="Tap to play">
+      <div class="tap-icon">▶</div>
+      <p>Tap to play</p>
+    </button>
   {/if}
 
   <div
@@ -101,16 +122,13 @@
 <style>
   :global(body) {
     margin: 0;
-    /* Prevent iOS bounce scroll revealing background */
     overscroll-behavior: none;
   }
 
   .intro-wrapper {
     position: relative;
     width: 100%;
-    /* Fallback for browsers that don't support dvh */
     height: 100vh;
-    /* dvh = dynamic viewport height — accounts for iOS Safari browser chrome */
     height: 100dvh;
     overflow: hidden;
     background: black;
@@ -123,15 +141,47 @@
     height: 100%;
     object-fit: cover;
     display: block;
-    /* Remove grab cursor on mobile — not meaningful on touch */
-    cursor: default;
   }
 
   @media (hover: hover) {
-    /* Only show grab cursor on devices that have a real pointer */
-    .intro-video {
-      cursor: grab;
-    }
+    .intro-video { cursor: grab; }
+  }
+
+  /* Tap-to-play prompt */
+  .tap-prompt {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+    color: white;
+  }
+
+  .tap-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 3px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    padding-left: 4px; /* optical center for play triangle */
+  }
+
+  .tap-prompt p {
+    font-family: sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0;
+    opacity: 0.85;
   }
 
   .headline-overlay {
@@ -159,7 +209,6 @@
     text-transform: uppercase;
     color: white;
     font-family: 'Gravitas One', serif;
-    /* clamp: min 2.5rem on tiny phones, scales with viewport, max 20vw on desktop */
     font-size: clamp(2.5rem, 20vw, 12rem);
     line-height: 0.9;
     text-shadow:
@@ -167,10 +216,7 @@
       0 2px 6px rgba(0, 0, 0, 0.9);
   }
 
-  /* Portrait phones — tighten padding */
   @media (max-width: 480px) {
-    h1 {
-      padding: 0 1rem;
-    }
+    h1 { padding: 0 1rem; }
   }
 </style>
