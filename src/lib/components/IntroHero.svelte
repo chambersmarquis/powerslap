@@ -5,14 +5,13 @@
   export let headline = 'POWER SLAP';
   export let storageKey = 'intro-video-played';
   export let fadeDuration = 1500;
-  
 
   const dispatch = createEventDispatcher();
 
   let videoEl: HTMLVideoElement;
+  let wrapperEl: HTMLDivElement;
   let showHeadline = false;
   let shouldRenderVideo = false;
-  
 
   onMount(() => {
     const hasPlayed = localStorage.getItem(storageKey);
@@ -22,28 +21,45 @@
     } else {
       shouldRenderVideo = true;
       showHeadline = true;
-     
     }
+
+    // Fix iOS 100vh bug — use actual window height instead of CSS vh
+    function setHeight() {
+      if (wrapperEl) {
+        wrapperEl.style.height = `${window.innerHeight}px`;
+      }
+    }
+
+    setHeight();
+    window.addEventListener('resize', setHeight);
+    // Also fire on orientation change for phones
+    window.addEventListener('orientationchange', () => {
+      setTimeout(setHeight, 100);
+    });
+
+    return () => {
+      window.removeEventListener('resize', setHeight);
+      window.removeEventListener('orientationchange', setHeight);
+    };
   });
 
   async function handleCanPlay() {
-    
-    if ( videoEl) {
+    if (videoEl) {
       try {
+        // Ensure muted before play — required for autoplay on iOS
+        videoEl.muted = true;
         await videoEl.play();
       } catch (error) {
         console.error('Autoplay failed:', error);
         showHeadline = true;
-       
         dispatch('finished');
       }
     }
   }
 
   function handleEnded() {
-   
     showHeadline = true;
-   
+    localStorage.setItem(storageKey, 'true');
     dispatch('finished');
   }
 </script>
@@ -57,7 +73,7 @@
   />
 </svelte:head>
 
-<div class="intro-wrapper">
+<div class="intro-wrapper" bind:this={wrapperEl}>
   {#if shouldRenderVideo}
     <video
       bind:this={videoEl}
@@ -85,15 +101,19 @@
 <style>
   :global(body) {
     margin: 0;
+    /* Prevent iOS bounce scroll revealing background */
+    overscroll-behavior: none;
   }
 
   .intro-wrapper {
     position: relative;
-    width: 100vw;
+    width: 100%;
+    /* Fallback for browsers that don't support dvh */
     height: 100vh;
+    /* dvh = dynamic viewport height — accounts for iOS Safari browser chrome */
+    height: 100dvh;
     overflow: hidden;
     background: black;
-   
   }
 
   .intro-video {
@@ -103,7 +123,15 @@
     height: 100%;
     object-fit: cover;
     display: block;
-  cursor: grab;
+    /* Remove grab cursor on mobile — not meaningful on touch */
+    cursor: default;
+  }
+
+  @media (hover: hover) {
+    /* Only show grab cursor on devices that have a real pointer */
+    .intro-video {
+      cursor: grab;
+    }
   }
 
   .headline-overlay {
@@ -131,10 +159,18 @@
     text-transform: uppercase;
     color: white;
     font-family: 'Gravitas One', serif;
-    font-size:  20vw;
+    /* clamp: min 2.5rem on tiny phones, scales with viewport, max 20vw on desktop */
+    font-size: clamp(2.5rem, 20vw, 12rem);
     line-height: 0.9;
     text-shadow:
       0 4px 20px rgba(0, 0, 0, 0.75),
       0 2px 6px rgba(0, 0, 0, 0.9);
+  }
+
+  /* Portrait phones — tighten padding */
+  @media (max-width: 480px) {
+    h1 {
+      padding: 0 1rem;
+    }
   }
 </style>
